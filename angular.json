@@ -5,6 +5,11 @@
   },
   "version": 1,
   "newProjectRoot": "projects",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
   "projects": {
     "employee-and-task-management-dashboards": {
       "projectType": "application",
@@ -30,10 +35,7 @@
               "src/assets"
             ],
             "styles": [
-              {
-                "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
-              },
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -100,10 +102,7 @@
               "src/assets"
             ],
             "styles": [
-              {
-                "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
-              },
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
