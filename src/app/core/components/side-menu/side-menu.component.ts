@@ -1,6 +1,9 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
-import { DrawerComponent, DrawerMode } from '@progress/kendo-angular-layout';
+import { filter } from 'rxjs';
+
+import { DrawerComponent, DrawerMode, DrawerSelectEvent } from '@progress/kendo-angular-layout';
 
 import { NavigationItem } from '../../models/navigation-item.model';
 
@@ -36,7 +39,20 @@ export class SideMenuComponent implements OnInit {
 
   @ViewChild(DrawerComponent) private drawer!: DrawerComponent;
 
-  public ngOnInit(): void {
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    // Update Drawer selected state when router path is changed
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event) => {
+      console.log('event: ', event);
+      this.items = this.items.map(item => {
+        item.selected = item.path == (event as NavigationEnd).urlAfterRedirects;
+        return item;
+      });
+    });
+
     this.setDrawerConfig();
 
     if (this.mode == 'overlay') {
@@ -63,5 +79,9 @@ export class SideMenuComponent implements OnInit {
 
   public toggle() {
     this.drawer.toggle();
+  }
+
+  public onSelect(event: DrawerSelectEvent) {
+    this.router.navigate([event.item.path]);
   }
 }
