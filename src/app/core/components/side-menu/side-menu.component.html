@@ -1,0 +1,17 @@
+<kendo-drawer-container>
+  <kendo-drawer
+    #drawer
+    [items]="items"
+    [mode]="mode"
+    [mini]="mini"
+    [autoCollapse]="autoCollapse"
+    [expanded]="expanded"
+    (select)="onSelect($event)"
+  >
+  </kendo-drawer>
+  <kendo-drawer-content>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </kendo-drawer-content>
+</kendo-drawer-container>
