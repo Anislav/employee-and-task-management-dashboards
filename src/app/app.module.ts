@@ -2,14 +2,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ButtonModule } from '@progress/kendo-angular-buttons';
+import { DrawerModule } from '@progress/kendo-angular-layout';
+import { AppBarModule } from '@progress/kendo-angular-navigation';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { SideMenuComponent } from './core/components/side-menu/side-menu.component';
-
-import { ButtonModule } from '@progress/kendo-angular-buttons';
-import { DrawerModule } from '@progress/kendo-angular-layout';
-import { AppBarModule } from '@progress/kendo-angular-navigation';
+import { EmployeesComponent } from './features/employees/employees.component';
+import { OrganizationComponent } from './features/organization/organization.component';
+import { TasksComponent } from './features/tasks/tasks.component';
 
 
 
@@ -18,6 +21,9 @@ import { AppBarModule } from '@progress/kendo-angular-navigation';
     AppComponent,
     HeaderComponent,
     SideMenuComponent,
+    EmployeesComponent,
+    OrganizationComponent,
+    TasksComponent,
   ],
   imports: [
     AppRoutingModule,
