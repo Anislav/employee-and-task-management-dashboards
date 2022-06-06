@@ -27,6 +27,7 @@
     "@progress/kendo-angular-popup": "^5.0.0",
     "@progress/kendo-angular-progressbar": "^3.0.0",
     "@progress/kendo-licensing": "^1.0.2",
+    "@progress/kendo-theme-material": "^5.4.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

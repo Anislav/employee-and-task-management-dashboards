@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+}
+
+main {
+  margin: 8px;
+}
+
+// nova theme swatch variables
+$border-radius: 2px;
+$primary-palette-name: pink;
+$secondary-palette-name: lightBlue;
+$theme-type: light;
+$adjust-contrast: true;
+
+@import "~@progress/kendo-theme-material/scss/appbar/_index.scss";
+@import "~@progress/kendo-theme-material/scss/button/_index.scss";
+@import "~@progress/kendo-theme-material/scss/drawer/_index.scss";
