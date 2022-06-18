@@ -1,1 +1,29 @@
-<p>employees works!</p>
+<kendo-treelist
+  [kendoTreeListFlatBinding]="employeeService.employees"
+  parentIdField="managerId"
+  idField="id"
+
+  kendoTreeListExpandable
+  [initiallyExpanded]="true"
+
+  [height]="400"
+  >
+
+  <ng-template kendoTreeListToolbarTemplate>
+    <button kendoTreeListAddCommand type="button">Add new</button>
+  </ng-template>
+
+  <kendo-treelist-column field="name" title="Name" [expandable]="true">
+  </kendo-treelist-column>
+
+  <kendo-treelist-column field="title" title="Title"> </kendo-treelist-column>
+
+  <kendo-treelist-column field="phone" title="Phone"> </kendo-treelist-column>
+
+  <kendo-treelist-column field="hireDate" title="Hire date">
+    <ng-template kendoTreeListCellTemplate let-dataItem>
+      {{ dataItem.hireDate | kendoDate }}
+    </ng-template>
+  </kendo-treelist-column>
+
+</kendo-treelist>

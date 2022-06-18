@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { EmployeeService } from 'src/app/core/services/employee.service';
 
 @Component({
   selector: 'etmd-employees',
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css']
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(public employeeService: EmployeeService) { }
 
 }
