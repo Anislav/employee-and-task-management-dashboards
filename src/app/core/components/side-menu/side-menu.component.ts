@@ -46,7 +46,6 @@ export class SideMenuComponent implements OnInit {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event) => {
-      console.log('event: ', event);
       this.items = this.items.map(item => {
         item.selected = item.path == (event as NavigationEnd).urlAfterRedirects;
         return item;

@@ -15,6 +15,7 @@ import { SideMenuComponent } from './core/components/side-menu/side-menu.compone
 import { EmployeesComponent } from './features/employees/employees.component';
 import { OrganizationComponent } from './features/organization/organization.component';
 import { TasksComponent } from './features/tasks/tasks.component';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 
 
@@ -37,6 +38,7 @@ import { TasksComponent } from './features/tasks/tasks.component';
     DrawerModule,
     IntlModule,
     TreeListModule,
+    GridModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,8 +5,10 @@
 
   kendoTreeListExpandable
   [initiallyExpanded]="true"
+  (expand)="onTreeToggle()"
+  (close)="onTreeToggle()"
 
-  [height]="400"
+  [height]="300"
   >
 
   <ng-template kendoTreeListToolbarTemplate>
@@ -20,10 +22,23 @@
 
   <kendo-treelist-column field="phone" title="Phone"> </kendo-treelist-column>
 
-  <kendo-treelist-column field="hireDate" title="Hire date">
-    <ng-template kendoTreeListCellTemplate let-dataItem>
-      {{ dataItem.hireDate | kendoDate }}
-    </ng-template>
+  <kendo-treelist-column field="hireDate" title="Hire date" [format]="{ date: 'short' }">
   </kendo-treelist-column>
 
 </kendo-treelist>
+
+<br />
+
+<kendo-grid
+  [data]="selectedEmployees"
+  (drop)="onEmployeeDrop($event)"
+
+  [height]="300"
+>
+
+  <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+  <kendo-grid-column field="title" title="Title"></kendo-grid-column>
+  <kendo-grid-column field="phone" title="Phone"></kendo-grid-column>
+  <kendo-grid-column field="hireDate" title="Hire date" [format]="{ date: 'short' }"></kendo-grid-column>
+
+</kendo-grid>

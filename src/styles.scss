@@ -1,3 +1,10 @@
+// nova theme swatch variables
+$border-radius: 2px;
+$primary-palette-name: pink;
+$secondary-palette-name: lightBlue;
+$theme-type: light;
+$adjust-contrast: true;
+
 body {
   margin: 0;
 }
@@ -6,14 +13,16 @@ main {
   margin: 8px;
 }
 
-// nova theme swatch variables
-$border-radius: 2px;
-$primary-palette-name: pink;
-$secondary-palette-name: lightBlue;
-$theme-type: light;
-$adjust-contrast: true;
+.k-grid th.underlined {
+  border-bottom: solid 3.2px $secondary-palette-name;
+}
+
+main .k-grid tr td.underlined {
+  border-bottom: solid $secondary-palette-name;
+}
 
 @import "~@progress/kendo-theme-material/scss/appbar/_index.scss";
 @import "~@progress/kendo-theme-material/scss/button/_index.scss";
 @import "~@progress/kendo-theme-material/scss/drawer/_index.scss";
+@import "~@progress/kendo-theme-material/scss/grid/_index.scss";
 @import "~@progress/kendo-theme-material/scss/treelist/_index.scss";
