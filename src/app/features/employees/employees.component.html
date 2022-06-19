@@ -3,17 +3,18 @@
   parentIdField="managerId"
   idField="id"
 
-  kendoTreeListExpandable
-  [initiallyExpanded]="true"
-  (expand)="onTreeToggle()"
-  (close)="onTreeToggle()"
+  etmdTreeListDraggable
+  (dragStart)="onEmployeeDragStarted($event)"
+  (dragEnd)="onEmployeeDragEnded($event)"
 
   [height]="300"
-  >
-
+>
   <ng-template kendoTreeListToolbarTemplate>
     <button kendoTreeListAddCommand type="button">Add new</button>
   </ng-template>
+
+  <kendo-treelist-column field="id" title="ID" [width]="80">
+  </kendo-treelist-column>
 
   <kendo-treelist-column field="name" title="Name" [expandable]="true">
   </kendo-treelist-column>
@@ -22,23 +23,33 @@
 
   <kendo-treelist-column field="phone" title="Phone"> </kendo-treelist-column>
 
-  <kendo-treelist-column field="hireDate" title="Hire date" [format]="{ date: 'short' }">
+  <kendo-treelist-column
+    field="hireDate"
+    title="Hire date"
+    [format]="{ date: 'short' }"
+  >
   </kendo-treelist-column>
-
 </kendo-treelist>
 
 <br />
 
 <kendo-grid
   [data]="selectedEmployees"
-  (drop)="onEmployeeDrop($event)"
+
+  etmdGridDroppable
+  (dropAt)="onEmployeeDroppedAt($event)"
 
   [height]="300"
 >
-
+  <kendo-grid-column field="id" title="ID" [width]="80"></kendo-grid-column>
   <kendo-grid-column field="name" title="Name"></kendo-grid-column>
   <kendo-grid-column field="title" title="Title"></kendo-grid-column>
   <kendo-grid-column field="phone" title="Phone"></kendo-grid-column>
-  <kendo-grid-column field="hireDate" title="Hire date" [format]="{ date: 'short' }"></kendo-grid-column>
-
+  <kendo-grid-column
+    field="hireDate"
+    title="Hire date"
+    filter="date"
+    [format]="{ date: 'short' }"
+  >
+</kendo-grid-column>
 </kendo-grid>
