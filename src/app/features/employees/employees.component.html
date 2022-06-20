@@ -35,19 +35,32 @@
 
 <kendo-grid
   [data]="drigData"
+
   [pageSize]="state.take"
   [skip]="state.skip"
   [sort]="state.sort"
   [pageable]="true"
+
   [filterable]="true"
   [filter]="state.filter"
   (dataStateChange)="onDataStateChanged($event)"
 
+  [selectable]="selectableSettings"
+  kendoGridSelectBy="id"
+  [(selectedKeys)]="gridSelection"
+
   etmdGridDroppable
   (dropAt)="onEmployeeDroppedAt($event)"
 
-  [height]="300"
+  [height]="400"
 >
+  <ng-template kendoGridToolbarTemplate>
+    <button type="button" icon="file-excel" kendoGridExcelCommand>
+      Export to Excel
+    </button>
+  </ng-template>
+  <kendo-grid-excel fileName="employees.xlsx" [fetchData]="exportToExcel"></kendo-grid-excel>
+
   <kendo-grid-column field="id" title="ID" [width]="80" [filterable]="false"></kendo-grid-column>
   <kendo-grid-column field="name" title="Name" [filterable]="false"></kendo-grid-column>
   <kendo-grid-column field="title" title="Title" [filterable]="false"></kendo-grid-column>
@@ -56,14 +69,10 @@
     field="hireDate"
     title="Hire date"
     [format]="{ date: 'short' }"
-    [filterable]="true"
-    filter="date">
+    [filterable]="true">
   >
   <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
-    <etmd-date-range-filter-cell
-      field="column.field"
-      [filter]="filter"
-      >
+    <etmd-date-range-filter-cell field="column.field" [filter]="filter">
     </etmd-date-range-filter-cell>
   </ng-template>
 </kendo-grid-column>

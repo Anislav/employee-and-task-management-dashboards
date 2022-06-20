@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { DataResult, process, State } from "@progress/kendo-data-query";
-import { DataStateChangeEvent } from '@progress/kendo-angular-grid';
+import { ExcelExportData } from '@progress/kendo-angular-excel-export';
+import { DataStateChangeEvent, SelectableSettings } from '@progress/kendo-angular-grid';
 
 import { Employee } from 'src/app/core/models/employee.model';
 import { EmployeeService } from 'src/app/core/services/employee.service';
@@ -24,16 +25,34 @@ export class EmployeesComponent {
   };
   public drigData: DataResult = process([], this.state);
 
+  public gridSelection: Number[] = []
+  public selectableSettings: SelectableSettings = {
+    drag: true,
+    mode: 'multiple'
+  }
+
   public selectedEmployees: Employee[] = []
   private draggedEmployee?: Employee;
 
   constructor(
     public employeeService: EmployeeService,
-  ) { }
+  ) {
+    this.exportToExcel = this.exportToExcel.bind(this);
+  }
 
   public onDataStateChanged(state: DataStateChangeEvent): void {
     this.state = state;
     this.drigData = process(this.selectedEmployees, this.state);
+  }
+
+  public exportToExcel(): ExcelExportData {
+    let employeesToExport = this.selectedEmployees;
+
+    if (this.gridSelection.length) {
+      employeesToExport = employeesToExport.filter((employee) => this.gridSelection.includes(employee.id));
+    }
+
+    return { data: employeesToExport };
   }
 
   public onEmployeeDragStarted(row: HTMLTableRowElement) {

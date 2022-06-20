@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { DateInputModule, DateRangeModule } from '@progress/kendo-angular-dateinputs';
 import { IntlModule } from "@progress/kendo-angular-intl";
-import { GridModule } from '@progress/kendo-angular-grid';
+import { ExcelModule, GridModule } from '@progress/kendo-angular-grid';
 import { DrawerModule } from '@progress/kendo-angular-layout';
 import { AppBarModule } from '@progress/kendo-angular-navigation';
 import { TreeListModule } from '@progress/kendo-angular-treelist';
@@ -47,6 +47,7 @@ import { DateRangeFilterCellComponent } from './shared/components/date-range-fil
     DateInputModule,
     DateRangeModule,
     DrawerModule,
+    ExcelModule,
     IntlModule,
     TreeListModule,
     GridModule,
