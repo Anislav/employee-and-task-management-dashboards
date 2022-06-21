@@ -14,14 +14,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { SideMenuComponent } from './core/components/side-menu/side-menu.component';
-import { TreeListDraggableDirective } from './core/directives/tree-list-draggable/tree-list-draggable.directive';
-import { GridDroppableDirective } from './core/directives/grid-droppable/grid-droppable.directive';
 import { EmployeesComponent } from './features/employees/employees.component';
 import { OrganizationComponent } from './features/organization/organization.component';
 import { TasksComponent } from './features/tasks/tasks.component';
+import { GridDroppableDirective } from './shared/directives/grid-droppable/grid-droppable.directive';
+import { TreeListDraggableDirective } from './shared/directives/tree-list-draggable/tree-list-draggable.directive';
 import { DateRangeFilterCellComponent } from './shared/components/date-range-filter-cell/date-range-filter-cell/date-range-filter-cell.component';
-
-
 
 
 
@@ -31,12 +29,12 @@ import { DateRangeFilterCellComponent } from './shared/components/date-range-fil
     AppComponent,
     HeaderComponent,
     SideMenuComponent,
-    TreeListDraggableDirective,
-    GridDroppableDirective,
     EmployeesComponent,
     OrganizationComponent,
     TasksComponent,
-    DateRangeFilterCellComponent
+    DateRangeFilterCellComponent,
+    GridDroppableDirective,
+    TreeListDraggableDirective,
   ],
   imports: [
     AppRoutingModule,
