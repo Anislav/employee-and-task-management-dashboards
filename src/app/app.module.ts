@@ -8,6 +8,7 @@ import { IntlModule } from "@progress/kendo-angular-intl";
 import { ExcelModule, GridModule } from '@progress/kendo-angular-grid';
 import { DrawerModule } from '@progress/kendo-angular-layout';
 import { AppBarModule } from '@progress/kendo-angular-navigation';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { TreeListModule } from '@progress/kendo-angular-treelist';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,7 @@ import { TasksComponent } from './features/tasks/tasks.component';
 import { GridDroppableDirective } from './shared/directives/grid-droppable/grid-droppable.directive';
 import { TreeListDraggableDirective } from './shared/directives/tree-list-draggable/tree-list-draggable.directive';
 import { DateRangeFilterCellComponent } from './shared/components/date-range-filter-cell/date-range-filter-cell/date-range-filter-cell.component';
+
 
 
 
@@ -49,6 +51,7 @@ import { DateRangeFilterCellComponent } from './shared/components/date-range-fil
     IntlModule,
     TreeListModule,
     GridModule,
+    PDFExportModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

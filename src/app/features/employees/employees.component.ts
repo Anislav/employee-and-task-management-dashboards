@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 import { DataResult, process, State } from "@progress/kendo-data-query";
 import { ExcelExportData } from '@progress/kendo-angular-excel-export';
@@ -10,7 +10,9 @@ import { EmployeeService } from 'src/app/core/services/employee.service';
 @Component({
   selector: 'etmd-employees',
   templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.css']
+  styleUrls: ['./employees.component.css'],
+  // View Encapsulation must be disabled in order to style the exported content
+  encapsulation: ViewEncapsulation.None
 })
 export class EmployeesComponent {
 

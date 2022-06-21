@@ -1,0 +1,14 @@
+.pdf-button {
+  display: flex;
+  justify-content: right;
+  padding-right: 1px;
+  margin-bottom: 8px;
+}
+
+.k-pdf-export .k-grid-toolbar {
+  display: none;
+}
+
+.k-pdf-export .k-filter-row {
+  display: none;
+}
