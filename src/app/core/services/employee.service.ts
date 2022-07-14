@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
+import { EditService } from "@progress/kendo-angular-treelist";
 
 import { Employee } from '../models/employee.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeeService {
+export class EmployeeService implements EditService {
 
-  employees: Employee[] = [
+  private employees: Employee[] = [
     {
         id: 1,
         name: 'Daryl Sweeney',
@@ -355,7 +355,56 @@ export class EmployeeService {
     }
   ];
 
-  public getEmployees(): Observable<Employee[]> {
-    return of(this.employees);
+  public getEmployees(): Employee[] {
+    return this.employees;
   }
+
+  public findEmployee(employeeId: Number): Employee | undefined {
+    return this.employees.find((item) => item.id === employeeId);
+  }
+
+  public getEmployeeTitles(): Array<string> {
+    const allTitles = this.employees.map((employee) => employee.title);
+    const uniqueTitles = new Set(allTitles);
+    return Array.from(uniqueTitles).sort();
+  }
+
+  public create(item: Employee, parent?: Employee, employeeId?: number): void {
+    item.id = employeeId ? employeeId : this.nextEmployeeId();
+    if (parent) {
+      item.managerId = parent.id;
+      const parentIndex = this.employees.findIndex((employee) => employee.id == parent.id);
+
+      const copiedEmployees = this.employees.slice()
+      copiedEmployees.splice(parentIndex, 0, item)
+
+      this.employees = [...copiedEmployees];
+    } else {
+      this.employees = [...this.employees, item];
+    }
+  }
+
+  private nextEmployeeId() {
+    const employeeIds = this.employees.map((employee) => employee.id);
+    const maxEmployeeId = Math.max(...employeeIds);
+    return maxEmployeeId + 1;
+  }
+
+  public update(item: Employee): void {
+    const employeeIndex = this.employees.findIndex((employee) => employee.id == item.id);
+    if (employeeIndex) {
+      const copiedEmployees = this.employees.slice()
+      copiedEmployees[employeeIndex] = item;
+      this.employees = [...copiedEmployees];
+    }
+  }
+
+  public remove(item: Employee, parent?: Employee): void {
+    this.employees = this.employees.filter((employee) => employee.id != item.id);
+  }
+
+  public assignValues(target: Employee, source: Employee): void {
+    Object.assign(target, source);
+  }
+
 }

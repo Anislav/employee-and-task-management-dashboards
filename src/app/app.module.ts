@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { DateInputModule, DateRangeModule } from '@progress/kendo-angular-dateinputs';
+import { DialogsModule } from '@progress/kendo-angular-dialog';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { MaskedTextBoxModule } from '@progress/kendo-angular-inputs';
 import { IntlModule } from "@progress/kendo-angular-intl";
 import { ExcelModule, GridModule } from '@progress/kendo-angular-grid';
 import { DrawerModule } from '@progress/kendo-angular-layout';
@@ -24,8 +28,6 @@ import { DateRangeFilterCellComponent } from './shared/components/date-range-fil
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,16 +44,21 @@ import { DateRangeFilterCellComponent } from './shared/components/date-range-fil
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+
     AppBarModule,
     ButtonModule,
     DateInputModule,
     DateRangeModule,
+    DialogsModule,
+    DropDownsModule,
     DrawerModule,
     ExcelModule,
     IntlModule,
-    TreeListModule,
+    MaskedTextBoxModule,
     GridModule,
     PDFExportModule,
+    TreeListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
